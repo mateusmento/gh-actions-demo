@@ -14,4 +14,4 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-region: sa-east-1
-          role-to-assume: arn:aws:iam::429249706241:role/aws-ecs-role
+          role-to-assume: arn:aws:iam::429249706241:role/gh-actions
