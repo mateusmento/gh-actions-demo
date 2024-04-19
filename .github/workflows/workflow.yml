@@ -1,7 +1,7 @@
 name: Github Action demo for building and publish a docker image
 on:
   push:
-    branches: [$default-branch]
+    branches: ['main']
 jobs:
   deploy:
     name: Build image
