@@ -12,8 +12,10 @@ jobs:
       - name: Create greeting.md
         run: |
           echo "Hello world" > greeting.md
-      - name: Commit changes
-        uses: EndBug/add-and-commit@v9
-        with:
-          author_name: Github action
-          message: 'Create greeting.md'
+      - name: Echo greeting
+        run: cat greeting.md
+      # - name: Commit changes
+      #   uses: EndBug/add-and-commit@v9
+      #   with:
+      #     author_name: Github action
+      #     message: 'Create greeting.md'
