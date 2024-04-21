@@ -12,6 +12,12 @@ jobs:
       - name: Git version
         run: |
           git --version
-      - name: Git config
+      - name: Git commit
         run: |
-          git config --list
+          git config --global user.name "Github action"
+          git config --global user.email ""
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          echo "Hello world" > hello.md
+          git add -A .
+          git commit -m "Automated hello world"
+          git push
