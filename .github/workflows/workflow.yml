@@ -1,17 +1,8 @@
 name: Github Action demo for building and publish a docker image
-on:
-  push:
-    branches: ['main']
+on: push
 jobs:
   deploy:
     name: Build image
     runs-on: ubuntu-latest
-    environment: production
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-region: sa-east-1
-          role-to-assume: arn:aws:iam::429249706241:role/gh-actions
+      - uses: actions/checkout@v3
