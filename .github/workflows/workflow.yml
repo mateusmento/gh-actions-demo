@@ -12,6 +12,6 @@ jobs:
       - name: Git version
         run: |
           git --version
-      - name: Echo git version
+      - name: Git config
         run: |
-          echo $(git --version)
+          git config
