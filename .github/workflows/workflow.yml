@@ -9,15 +9,11 @@ jobs:
       - name: Greet
         run: |
           echo "Hello world"
-      - name: Git version
+      - name: Create greeting.md
         run: |
-          git --version
-      - name: Git commit
-        run: |
-          git config --global user.name "Github action"
-          git config --global user.email ""
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
-          echo "Hello world" > hello.md
-          git add -A .
-          git commit -m "Automated hello world"
-          git push
+          echo "Hello world" > greeting.md
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: Github action
+          message: 'Create greeting.md'
