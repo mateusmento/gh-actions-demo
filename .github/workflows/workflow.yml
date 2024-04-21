@@ -14,4 +14,4 @@ jobs:
           git --version
       - name: Git config
         run: |
-          git config
+          git config --list
