@@ -17,5 +17,9 @@
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "pg": "^8.11.5",
+    "typeorm": "^0.3.20"
   }
 }
