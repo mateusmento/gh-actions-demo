@@ -9,3 +9,9 @@ jobs:
       - name: Greet
         run: |
           echo "Hello world"
+      - name: Git version
+        run: |
+          git --version
+      - name: Echo git version
+        run: |
+          echo $(git --version)
