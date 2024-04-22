@@ -5,8 +5,6 @@ describe("PostgreSQL testcontainers demo", () => {
   let database: StartedPostgreSqlContainer;
   let dataSource: DataSource;
 
-  const TEST_TIMEOUT = 30000;
-
   beforeEach(async () => {
     database = await new PostgreSqlContainer("postgres:14")
       .withDatabase("demo")
@@ -28,7 +26,7 @@ describe("PostgreSQL testcontainers demo", () => {
     })
 
     await dataSource.initialize();
-  }, TEST_TIMEOUT);
+  });
 
   afterEach(async () => {
     await dataSource.destroy();
