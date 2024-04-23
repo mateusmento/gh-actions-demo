@@ -69,18 +69,6 @@ resource "aws_instance" "epicstory-api" {
   }
 }
 
-variable "AWS_ACCESS_KEY_ID" {
-  type = string
-}
-
-variable "AWS_SECRET_ACCESS_KEY" {
-  type = string
-}
-
-variable "AWS_REGION" {
-  type = string
-}
-
 output "epicstory-api-host" {
   value = aws_instance.epicstory-api.public_dns
 }
