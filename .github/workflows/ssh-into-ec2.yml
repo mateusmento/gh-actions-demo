@@ -21,11 +21,13 @@ jobs:
           cd deploy
           terraform init
           terraform apply --auto-approve
-          echo "$(terraform output)" >> "$GITHUB_OUTPUT"
+          echo "hostname=$(terraform output -raw epicstory-api-host)" >> "$GITHUB_OUTPUT"
+      - name: Echo hostname
+        run: echo ${{steps.terraform-apply.outputs.hostname}}
       - name: SSH into deployed instance
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{steps.terraform-apply.outputs.epicstory-api-host}}
+          host: ${{steps.terraform-apply.outputs.hostname}}
           username: ec2-user
           key: ${{secrets.SSH_PRIVATE_KEY}}
           script: |
