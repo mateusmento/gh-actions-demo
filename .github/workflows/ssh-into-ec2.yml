@@ -1,0 +1,33 @@
+name: SSH into an ec2 instance
+on:
+  push:
+    branches: main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure AWS CLI
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+      - name: Setup terraform
+        uses: hashicorp/setup-terraform@v3
+      - name: Terraform apply
+        id: terraform-apply
+        run: |
+          cd deploy
+          terraform init
+          terraform apply --auto-approve
+          echo "$(terraform output)" >> "$GITHUB_OUTPUT"
+      - name: SSH into deployed instance
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{steps.terraform-apply.outputs.epicstory-api-host}}
+          username: ec2-user
+          key: ${{secrets.SSH_PRIVATE_KEY}}
+          script: |
+            echo "hello $(whoami)" > output
+            cat output
