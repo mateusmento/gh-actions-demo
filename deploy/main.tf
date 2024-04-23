@@ -10,7 +10,7 @@ terraform {
 
   backend "s3" {
     bucket = "epicstory-terraform-backend"
-    key    = "api/terraform.tfstate"
+    key    = "gh-actions-demo/terraform.tfstate"
     region = "sa-east-1"
   }
 }
