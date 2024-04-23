@@ -38,4 +38,6 @@ jobs:
               --output text \
               --query Reservations[*].Instances[*].PublicDnsName \
               --filters "Name=tag:Name,Values=epicstory-app")
-            echo $APP_DNS
+            echo "export $CORS_ORIGINS=$APP_DNS" >> ~/.bashrc
+            source ~/.bashrc
+            echo $CORS_ORIGINS
