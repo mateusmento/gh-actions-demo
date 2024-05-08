@@ -34,6 +34,9 @@ jobs:
             aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
             aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
             aws configure set region ${{ secrets.AWS_REGION }}
+            aws ec2 wait instance-exists \
+              --filters "Name=tag:Name,Values=epicstory-app" \
+              --filters "Name=instance-state-name,Values=running"
             export APP_DNS=$(aws ec2 describe-instances \
               --output text \
               --query Reservations[*].Instances[*].PublicDnsName \
