@@ -2,7 +2,6 @@ name: Release workflow
 on:
   push:
     tags: 'v*'
-    branches: main
 jobs:
   release:
     runs-on: ubuntu-latest
