@@ -1,0 +1,14 @@
+name: Release workflow
+on:
+  push:
+    tags: 'v*'
+    branches: main
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Echo tags
+        run:
+          git tag
