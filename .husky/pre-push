@@ -1,0 +1,23 @@
+#!/bin/bash
+
+while read local_ref local_sha remote_ref remote_sha; do
+  # Check if the ref is a branch
+  if [[ "$remote_ref" =~ refs/heads/ ]]; then
+    branch_name=${remote_ref#refs/heads/}
+    echo "Pushing branch: $branch_name"
+    # Add your logic for handling branch pushes here
+
+  # Check if the ref is a tag
+  elif [[ "$remote_ref" =~ refs/tags/ ]]; then
+    tag_name=${remote_ref#refs/tags/}
+    echo "Pushing tag: $tag_name"
+    # Add your logic for handling tag pushes here
+  fi
+done
+
+
+# current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/,,')
+# if [ "$current_branch" != "main" ]; then
+#   echo "Error: You can only create tags from the main branch."
+#   exit 1
+# fi
