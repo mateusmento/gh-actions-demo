@@ -1,5 +1,6 @@
 name: Github Action demo
-on: push
+on:
+  workflow_dispatch:
 jobs:
   unit_tests:
     name: Run demo
